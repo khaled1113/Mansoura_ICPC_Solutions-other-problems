@@ -1,13 +1,21 @@
 #include <iostream>
 #include <algorithm>
-using namespace std;
-int main(){
-    int n1,n2,n3;
-    cin>>n1>>n2>>n3;
-    int m=max(n1,max(n2,n3));
-    if(m<=n1+n2+n3-m)cout<<"0";
-    else{
-        cout<<abs((n1+n2+n3-m)-(m+1));
 
+using namespace std;
+
+int main() {
+    int a, b, c;
+    cin >> a >> b >> c;
+
+    int sticks[3] = {a, b, c};
+    sort(sticks, sticks + 3);
+
+    if (sticks[0] + sticks[1] > sticks[2]) {
+        cout << "0" << endl;
+    } else {
+        int diff = sticks[2] - (sticks[0] + sticks[1]) + 1;
+        cout << diff << endl;
     }
+
+    return 0;
 }
