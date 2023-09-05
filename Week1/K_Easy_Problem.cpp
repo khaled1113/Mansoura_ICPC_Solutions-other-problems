@@ -1,25 +1,34 @@
 #include <iostream>
-#include <cmath> // Include the math library for sqrt function
+
 using namespace std;
+
+bool is_prime(int x) {
+    if (x <= 1) {
+        return false;
+    }
+    for (int i = 2; i * i <= x; ++i) {
+        if (x % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
 
 int main() {
     int n;
-    cin>>n;
-    bool isPrime = false;
-    if(n==1){
-        cout<<"NO";
-        return 0;
-    
-    }
-    for(int i=2;i<=sqrt(n);i++){
-        if(n%i==0){
-            if(i==13) isPrime = true;
-            
-            }
-            if(n/i==13) isPrime = true;
+    cin >> n;
 
+    if (n < 13) {
+        cout << "NO" << endl;
+    } else {
+        for (int num = 13; num <= n; num += 13) {
+            if (is_prime(num)) {
+                cout << "YES" << endl;
+                return 0;
+            }
         }
-        if(isPrime) cout<<"YES";
-        else cout<<"NO";
-        
+        cout << "NO" << endl;
     }
+
+    return 0;
+}
